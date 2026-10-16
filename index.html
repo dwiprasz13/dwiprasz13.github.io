@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PPDB SMP Islam Integral Luqman Al Hakim Purwodadi</title>
+<style>
+:root {
+  --hijau: #174637;
+  --emas: #d8b86a;
+  --putih: #ffffff;
+  --latar: #f7f5ed;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #26382f;
+  line-height: 1.6;
+}
+header {
+  background: var(--hijau);
+  color: white;
+  padding: 18px 7%;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 12px;
+}
+.hero {
+  background: var(--hijau);
+  color: white;
+  padding: 55px 7% 65px;
+}
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.15;
+  max-width: 750px;
+}
+.hero p { max-width: 650px; }
+.eyebrow { color: var(--emas); font-weight: bold; }
+.buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+.btn {
+  display: inline-block;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-gold { background: var(--emas); color: #173d30; }
+.btn-outline { border: 1px solid white; color: white; }
+section { padding: 48px 7%; }
+section h2 { color: var(--hijau); }
+.light { background: var(--latar); }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+}
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 3px 14px #0000000c;
+}
+#formDaftar {
+  display: none;
+  background: white;
+  border: 1px solid #dce3dc;
+  border-radius: 14px;
+  padding: 24px;
+  max-width: 650px;
+  margin: 28px auto 0;
+}
+#formDaftar.tampil { display: block; }
+form label {
+  display: block;
+  font-weight: bold;
+  margin-top: 14px;
+}
+form input, form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #cbd5cd;
+  border-radius: 7px;
+  font: inherit;
+}
+form textarea { min-height: 85px; }
+.note { font-size: 13px; color: #5e6a62; }
+footer {
+  background: var(--hijau);
+  color: white;
+  padding: 28px 7%;
+}
+@media (max-width: 600px) {
+  nav { align-items: flex-start; }
+  nav a { margin: 0 8px 0 0; }
+  section { padding: 36px 6%; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <strong>SMP ISLAM INTEGRAL LUQMAN AL HAKIM PURWODADI</strong>
+    <div>
+      <a href="#keunggulan">Keunggulan</a>
+      <a href="#program">Program</a>
+      <a href="#informasi">Info PPDB</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <p class="eyebrow">PENERIMAAN PESERTA DIDIK BARU</p>
+  <h1>Membangun Generasi Islami, Beradab, Berkarakter dan Peduli Lingkungan</h1>
+  <p>
+    Pendidikan yang memadukan ilmu pengetahuan,
+    adab Islami, tahfidz Al-Qur'an, penguatan karakter dan peduli lingkungan.
+  </p>
+  <p><strong>Tahun Ajaran 2027/2028</strong></p>
+  <div class="buttons">
+    <button class="btn btn-gold" onclick="bukaForm()">
+      Daftar Sekarang
+    </button>
+    <a class="btn btn-outline" id="tombolKonsultasi"
+       href="#" target="_blank" rel="noopener">
+      Konsultasi PPDB via WhatsApp
+    </a>
+  </div>
+
+  <div id="formDaftar">
+    <h2>Formulir Pendaftaran PPDB</h2>
+    <p>Silakan lengkapi data calon peserta didik.</p>
+
+    <form id="formPPDB" method="post" target="tujuanKirim">
+      <label>Nama lengkap anak</label>
+      <input name="nama" required maxlength="100">
+
+      <label>Nama orang tua/wali</label>
+      <input name="orangTua" required maxlength="100">
+
+      <label>Asal sekolah SD/MI</label>
+      <input name="asalSekolah" required maxlength="150">
+
+      <label>Alamat rumah</label>
+      <textarea name="alamat" required maxlength="500"></textarea>
+
+      <label>Nomor WhatsApp aktif</label>
+      <input name="wa" type="tel" required
+             maxlength="20" placeholder="Contoh: 08xxxxxxxxxx">
+
+      <input name="website" tabindex="-1" autocomplete="off"
+             aria-hidden="true"
+             style="position:absolute;left:-9999px">
+
+      <p class="note">
+        Data digunakan oleh panitia untuk keperluan PPDB.
+      </p>
+      <button class="btn btn-gold" id="tombolKirim" type="submit">
+        Kirim Pendaftaran
+      </button>
+      <button class="btn" type="button" onclick="tutupForm()">
+        Tutup
+      </button>
+      <p id="statusKirim" role="status" aria-live="polite"></p>
+    </form>
+    <iframe name="tujuanKirim" id="tujuanKirim"
+            title="Pengiriman formulir"
+            style="display:none"></iframe>
+  </div>
+</section>
+
+<section id="keunggulan" class="light">
+  <h2>Kenapa Pilih Kami?</h2>
+  <div class="cards">
+    <article class="card">
+      <h3>Adab</h3>
+      <p>Membiasakan sikap santun, hormat, dan berakhlak mulia.</p>
+    </article>
+    <article class="card">
+      <h3>Tahfidz Al-Qur'an</h3>
+      <p>Menumbuhkan kecintaan terhadap Al-Qur'an melalui program sekolah.</p>
+    </article>
+    <article class="card">
+      <h3>Karakter</h3>
+      <p>Mengembangkan kedisiplinan, kemandirian, tanggung jawab dan cinta lingkungan.</p>
+    </article>
+  </div>
+</section>
+
+<section id="program">
+  <h2>Program Unggulan</h2>
+  <div class="cards">
+    <article class="card"><h3>Tahfidz</h3><p>Program Al-Qur'an sesuai kurikulum sekolah.</p></article>
+    <article class="card"><h3>Akademik</h3><p>Pembelajaran untuk mengembangkan potensi siswa.</p></article>
+    <article class="card"><h3>Pengembangan Bakat</h3><p>Kegiatan dan ekstrakurikuler sesuai program sekolah.</p></article>
+  </div>
+</section>
+
+<section class="light">
+  <h2>Profil dan Fasilitas Sekolah</h2>
+  <p>Tambahkan profil sekolah, foto guru, ruang kelas,
+     perpustakaan, laboratorium, serta fasilitas yang benar-benar tersedia.</p>
+  <h2>Kegiatan dan Prestasi</h2>
+  <p>Tambahkan foto kegiatan siswa, karya, prestasi,
+     dan testimoni yang telah mendapatkan izin untuk dipublikasikan.</p>
+</section>
+
+<section id="informasi">
+  <h2>Informasi PPDB</h2>
+  <p>Persyaratan, jadwal, biaya resmi, dan alur pendaftaran
+     dapat diperoleh melalui panitia PPDB 2027/2028.</p>
+  <div class="buttons">
+    <button class="btn btn-gold" onclick="bukaForm()">Daftar Sekarang</button>
+    <a class="btn" style="background:#e5eee8;color:#174637"
+       id="konsultasiBawah" href="#" target="_blank" rel="noopener">
+       Konsultasi PPDB
+    </a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <strong>SMP ISLAM INTEGRAL LUQMAN AL HAKIM PURWODADI</strong>
+  <p>Alamat sekolah: Jl. Tentara Pelajar, Kelurahan Kalongan, Kecamatan Purwodadi, Kabupaten Grobogan, Jawa Tengah 58114</p>
+  <p>Kontak PPDB: 085161510622</p>
+</footer>
+
+<script>
+const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbwkY2IA3KFVkTOH_D-fat4f32TrUH6DhwAjqzE8-DZEBnzVwaJh491hZck_G1SM6AG1/exec";
+const NOMOR_ADMIN = "085781610524";
+
+document.getElementById("formPPDB").action = URL_APPS_SCRIPT;
+
+const pesanKonsultasi =
+  "Assalamu'alaikum, saya ingin konsultasi PPDB SMP Islam Integral Luqman Al Hakim Purwodadi. Mohon informasi persyaratan, jadwal Gelombang, dan biaya pendaftaran.Terimakasih";
+
+const linkKonsultasi =
+  "https://wa.me/" + NOMOR_ADMIN +
+  "?text=" + encodeURIComponent(pesanKonsultasi);
+
+document.getElementById("tombolKonsultasi").href = linkKonsultasi;
+document.getElementById("konsultasiBawah").href = linkKonsultasi;
+
+function bukaForm() {
+  const form = document.getElementById("formDaftar");
+  form.classList.add("tampil");
+  form.scrollIntoView({ behavior: "smooth", block: "start" });
+  form.querySelector("input[name='nama']").focus();
+}
+
+function tutupForm() {
+  document.getElementById("formDaftar").classList.remove("tampil");
+}
+
+document.getElementById("formPPDB").addEventListener("submit", function(e) {
+  const form = this;
+  const nama = form.elements["nama"].value.trim();
+  const ortu = form.elements["orangTua"].value.trim();
+  const asal = form.elements["asalSekolah"].value.trim();
+  const alamat = form.elements["alamat"].value.trim();
+  const wa = form.elements["wa"].value.trim();
+
+  if (!nama || !ortu || !asal || !alamat || !wa) {
+    e.preventDefault();
+    alert("Mohon lengkapi semua kolom.");
+    return;
+  }
+
+  if (!/^(\+?62|0)[0-9\s-]{8,17}$/.test(wa)) {
+    e.preventDefault();
+    alert("Periksa kembali nomor WhatsApp.");
+    return;
+  }
+
+  if (form.elements["website"].value) {
+    e.preventDefault();
+    return;
+  }
+
+  // Buka WhatsApp sebagai tindakan langsung pengguna,
+  // sambil formulir dikirim ke Apps Script.
+  const pesanDaftar =
+    "Assalamu'alaikum Admin PPDB, saya telah mengisi formulir pendaftaran.\n" +
+    "Nama anak: " + nama + "\n" +
+    "Nama orang tua: " + ortu + "\n" +
+    "Asal sekolah: " + asal + "\n" +
+    "Nomor WA: " + wa +
+    "\nMohon informasi tindak lanjut pendaftaran.";
+
+  window.open(
+    "https://wa.me/" + NOMOR_ADMIN +
+    "?text=" + encodeURIComponent(pesanDaftar),
+    "_blank"
+  );
+
+  document.getElementById("statusKirim").textContent =
+    "Formulir sedang dikirim. Periksa WhatsApp untuk menghubungi admin.";
+});
+</script>
+</body>
+</html>
